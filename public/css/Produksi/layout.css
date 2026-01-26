@@ -1,0 +1,39 @@
+/* ================= PAGE LAYOUT ================= */
+.page-container {
+    max-width: 1550px;
+    margin: 24px auto;
+    padding: 0 30px; /* SAMA DENGAN HEADER */
+    box-sizing: border-box;
+}
+
+/* ================= CONTENT CARD ================= */
+.content-card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+/* ================= CARD HEADER ================= */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.card-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* ================= TOOLBAR ================= */
+.card-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
