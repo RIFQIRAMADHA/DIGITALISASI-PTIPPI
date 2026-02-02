@@ -2,50 +2,74 @@
     <div class="header-container">
         <div class="header-content">
 
-            <!-- LEFT -->
             <div class="header-left">
-                <img src="/images/logo-ippi.png" class="logo" alt="Logo">
+                <img src="{{ asset('images/logo-ippi.png') }}" class="logo" alt="Logo IPPI">
             </div>
 
-            <!-- MENU -->
             <nav class="header-menu">
+                {{-- DASHBOARD --}}
+                <a href="{{ route('dashboard') }}"
+                   class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    Dashboard
+                </a>
 
-                <a href="#" class="menu-item active">Dashboard</a>
+                {{-- DASHBOARD --}}
+                <a href="{{ route('dashboard') }}"
+                   class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    Daily Input
+                </a>
 
+                {{-- MASTER DATA --}}
                 <div class="menu-dropdown">
-                    <span class="menu-item dropdown-trigger">
+                    <span class="menu-item dropdown-trigger {{ request()->is('master/*') ? 'active' : '' }}">
                         Master Data
                     </span>
                     <div class="dropdown-menu">
-                        <a href="#">Employee</a>
-                        <a href="#">Production Line</a>
-                        <a href="#">Production Item</a>
-                        <a href="#">Customer</a>
+                        <a href="{{ route('master.employee.index') }}">Employee</a>
+                        <a href="{{ route('master.productionline.index') }}">Line Production</a>
+                        <a href="{{ route('master.itemproduction.index') }}">Item Production</a>
+                        <a href="{{ route('master.customer.index') }}">Customer</a>
                     </div>
                 </div>
 
-                <a href="#" class="menu-item">Produksi</a>
+                {{-- PRODUKSI --}}
+                <a href="{{ route('productionschedule.index') }}"
+                   class="menu-item {{ request()->routeIs('productionschedule.*') ? 'active' : '' }}">
+                    Production Schedule
+                </a>
 
+                {{-- LAPORAN --}}
                 <div class="menu-dropdown">
-                    <span class="menu-item dropdown-trigger">
-                        Laporan
-                    </span>
+                    <span class="menu-item dropdown-trigger">Daily Report</span>
                     <div class="dropdown-menu">
-                        <a href="#">Daily Report</a>
-                        <a href="#">BA Reject</a>
-                        <a href="#">QPR</a>
+                        <a href="#" class="disabled">Daily Report</a>
+                        <a href="#" class="disabled">BA Reject</a>
+                        <a href="#" class="disabled">QPR</a>
                     </div>
                 </div>
-
             </nav>
 
-            <!-- RIGHT -->
             <div class="header-right">
-                <span class="header-clock" id="clock">00:00:00</span>
-                <span class="user-name">Admin</span>
-                <a href="#" class="logout-icon">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
+                <div class="clock-box">
+                    <span class="header-clock" id="clock">00:00:00</span>
+                </div>
+                
+                <div class="user-profile">
+                    <span class="user-name">{{ Auth::user()->NamaKaryawan }}</span>
+                    <div class="user-meta">
+                        <span class="user-role">{{ Auth::user()->Jabatan }}</span>
+                        <span class="meta-divider">|</span>
+                        {{-- Tambahkan NRP di sini bang biar gak kosong sebelah garisnya --}}
+                        <span class="user-nrp">{{ Auth::user()->NRPKaryawan }}</span>
+                    </div>
+                </div>
+
+                <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                    @csrf
+                    <button type="submit" class="btn-logout-header">
+                        Logout
+                    </button>
+                </form>
             </div>
 
         </div>

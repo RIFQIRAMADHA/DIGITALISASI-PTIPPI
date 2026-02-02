@@ -377,3 +377,188 @@ textarea,
     display: flex;
     gap: 8px;
 }
+
+/* CENTER HEADER TABLE */
+.table-custom thead th {
+    text-align: center;
+}
+
+/* ===== FORCE TABLE ALIGN FIX ===== */
+.table-custom {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-custom th,
+.table-custom td {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* ===== ACTION BUTTON TABLE FIX ===== */
+.table-custom .btn {
+    min-width: auto !important;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+/* ================= TABLE FIX EMAIL & NPWP ================= */
+.table-fixed {
+    table-layout: fixed;
+}
+
+/* EMAIL */
+.col-email {
+    width: 220px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* NPWP */
+.col-npwp {
+    width: 180px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* BIAR AKSI GA IKUT NGEGEPENG */
+.action-group {
+    min-width: 220px;
+}
+
+/* Menjaga tombol tetap dalam satu baris horizontal */
+.action-buttons-container {
+    display: flex;
+    justify-content: center; /* Meratakan ke tengah */
+    align-items: center;     /* Meluruskan secara vertikal */
+    gap: 8px;               /* Memberi jarak antar tombol */
+    flex-wrap: nowrap;      /* Mencegah tombol turun ke baris baru */
+}
+
+/* Pastikan kolom aksi memiliki text-align center jika dibutuhkan */
+.text-center {
+    text-align: center;
+}
+
+/* Memastikan tabel menggunakan layout tetap agar colgroup berfungsi */
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Styling Tombol Import Excel agar Teks Putih & Center */
+.btn-success {
+    font-weight: 600 !important;
+    padding: 8px 20px !important;
+    color: #ffffff !important; /* Teks Putih */
+}
+
+/* Form Kalender Custom */
+.input-date-custom {
+    width: 220px !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+    cursor: pointer;
+}
+
+/* Dropdown Line Custom */
+.select-line-custom {
+    width: 200px !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 8px !important;
+    padding: 7px 12px !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+    cursor: pointer;
+}
+
+/* Tombol Cari (Abu-abu seperti desain) */
+.btn-cari-custom {
+    background-color: #8e9aaf !important;
+    color: white !important;
+    border: none !important;
+    padding: 7px 25px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: 0.3s;
+}
+
+.btn-cari-custom:hover {
+    background-color: #7a869a !important;
+}
+
+/* TOMBOL IMPORT EXCEL CUSTOM */
+.btn-import-excel {
+    background-color: #28a745 !important; /* Warna Hijau */
+    color: #ffffff !important;           /* Teks Putih Mutlak */
+    border: none;
+    border-radius: 8px;                  /* Corner Radius 8px */
+    height: 38px;                        /* Tinggi sama dengan Form Search */
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    
+    /* Centering Teks & Icon */
+    display: flex;                       
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    min-width: 145px;
+    text-decoration: none;
+}
+
+/* Efek Hover */
+.btn-import-excel:hover {
+    background-color: #218838 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+}
+
+/* Jarak Icon Excel ke Teks */
+.btn-import-excel i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* Dropdown Line Custom - Diperpanjang agar teks Nama & Shift muat [cite: 2025-12-06] */
+.select-line-custom {
+    width: 320px !important;            /* Sebelumnya mungkin 190px/200px, kita panjangin ke 320px */
+    height: 38px !important;            /* Tetap samakan tinggi dengan form search */
+    border: 1px solid #ced4da !important;
+    border-radius: 8px !important;      /* Corner radius sinkron 8px */
+    padding: 0 12px !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.btn-add-schedule {
+    background-color: #4361ee !important; /* Warna Biru IPPI */
+    color: #ffffff !important;           /* Teks Putih */
+    border: none;
+    border-radius: 8px;                  /* Corner radius 8px sinkron */
+    height: 38px;                        /* Tinggi 38px sejajar search */
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 165px;
+}
+
+.btn-add-schedule:hover {
+    background-color: #3751d4 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
+}

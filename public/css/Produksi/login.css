@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body.login-bg {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../images/PT-IPPI-6.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 450px;
+    background: white;
+    padding: 60px 40px 40px 40px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.logo-box {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.logo-box img {
+    max-width: 110px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #e31e24;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: #e31e24;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: #bc181d;
+}

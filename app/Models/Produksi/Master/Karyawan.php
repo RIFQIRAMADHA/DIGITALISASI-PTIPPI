@@ -2,25 +2,51 @@
 
 namespace App\Models\Produksi\Master;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Karyawan extends Model
+class Karyawan extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'ms_karyawan'; // sesuai validasi kamu
-    protected $primaryKey = 'idKaryawan';
+    protected $table = 'prod_msKaryawan';
+
+    // LOGIN pakai NRP
+    protected $primaryKey = 'NRPKaryawan';
     protected $keyType = 'string';
-    public $incrementing = false; // karena pakai id manual
-    public $timestamps = false;
-    
+    public $incrementing = false;
+
+    public $timestamps = true;
 
     protected $fillable = [
-        'idKaryawan',
+        'IdKaryawan',
         'NamaKaryawan',
         'NRPKaryawan',
+        'PasswordKaryawan',
         'Jabatan',
-        'Status'
+        'Status',
+        'create_by',
+        'update_by'
     ];
+
+    protected $hidden = [
+        'PasswordKaryawan'
+    ];
+
+    /**
+     * Laravel Auth ambil password dari kolom ini
+     */
+    public function getAuthPassword()
+    {
+        return $this->PasswordKaryawan;
+    }
+
+    /**
+     * 🔥 PENTING
+     * Route (view/edit/delete) pakai IdKaryawan
+     */
+    public function getRouteKeyName()
+    {
+        return 'IdKaryawan';
+    }
 }

@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ms_karyawan', function (Blueprint $table) {
-            $table->string('idKaryawan')->primary();
-            $table->string('NamaKaryawan');
-            $table->string('NRPKaryawan');
-            $table->enum('Jabatan', ['admin','leader','foreman','supervisor','ppc']);
+        Schema::create('ms_productionline', function (Blueprint $table) {
+            $table->string('IdProductionLine')->primary();
+            $table->string('NamaProductionLine');
+            $table->string('Shift');
             $table->integer('Status');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('ms_karyawan');
+        Schema::dropIfExists('ms_productionline');
     }
 };

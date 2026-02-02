@@ -1,7 +1,7 @@
 @extends('Produksi.layouts.main')
 
-@section('title', 'Tambah Karyawan')
-@section('page-title', 'Tambah Karyawan')
+@section('title', 'Tambah Customer')
+@section('page-title', 'Tambah Customer')
 
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -9,7 +9,7 @@
 <div class="breadcrumb">
     <span>A-Track</span> <span class="separator">></span>
     <span>Data Master</span> <span class="separator">></span>
-    <span class="active">Employee</span>
+    <span class="active">Customer</span>
 </div>
 
 {{-- SweetAlert untuk Error Validasi --}}
@@ -29,61 +29,67 @@
             </div>
         `,
         confirmButtonColor: '#d33',
-        confirmButtonText: 'Perbaiki Data'
+        confirmButtonText: 'Perbaiki'
     });
 </script>
 @endif
 
-<form action="{{ route('master.employee.store') }}" method="POST" class="form" id="formEmployee">
+<form action="{{ route('master.customer.store') }}" method="POST" class="form" id="formCustomer">
     @csrf
     <div class="form-grid">
         <div class="form-group">
-            <label>Nama</label>
-            <input type="text" name="NamaKaryawan" value="{{ old('NamaKaryawan') }}" required
+            <label>Nama Customer</label>
+            <input type="text" name="NamaCustomer" value="{{ old('NamaCustomer') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Alamat Customer</label>
+            <input type="text" name="AlamatCustomer" value="{{ old('AlamatCustomer') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Nama PIC</label>
+            <input type="text" name="NamaCustomerPIC" value="{{ old('NamaCustomerPIC') }}" required
                    oninput="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')">
         </div>
 
         <div class="form-group">
-            <label>Password Karyawan</label>
-            <input type="password" name="PasswordKaryawan" required>
-        </div>
-
-        <div class="form-group">
-            <label>NRP</label>
-            <input type="text" name="NRPKaryawan" value="{{ old('NRPKaryawan') }}" required
+            <label>Nomor Telepon</label>
+            <input type="text" name="NoTelpCustomer" value="{{ old('NoTelpCustomer') }}" maxlength="13" required
                    oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         </div>
 
         <div class="form-group">
-            <label>Jabatan</label>
-            <select name="Jabatan">
-                @foreach(['admin','leader','foreman','supervisor','ppc'] as $j)
-                    <option value="{{ $j }}" {{ old('Jabatan')==$j?'selected':'' }}>{{ ucfirst($j) }}</option>
-                @endforeach
-            </select>
+            <label>Email Customer</label>
+            <input type="email" name="EmailCustomer" value="{{ old('EmailCustomer') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>NPWP</label>
+            <input type="text" name="NPWPCustomer" value="{{ old('NPWPCustomer') }}" maxlength="15" required
+                   oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         </div>
     </div>
 
     <div class="form-actions">
         <button type="button" class="btn btn-primary" onclick="confirmSave()">Simpan</button>
-        <a href="{{ route('master.employee.index') }}" class="btn btn-outline">Batal</a>
+        <a href="{{ route('master.customer.index') }}" class="btn btn-outline">Batal</a>
     </div>
 </form>
 
 <script>
 function confirmSave() {
     Swal.fire({
-        title: 'Simpan Data Karyawan?',
-        text: "Pastikan semua data yang dimasukkan sudah benar.",
+        title: 'Simpan Data Customer?',
+        text: "Pastikan data customer sudah benar.",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#aaa',
         confirmButtonText: 'Ya, Simpan!',
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('formEmployee').submit();
+            document.getElementById('formCustomer').submit();
         }
     });
 }
