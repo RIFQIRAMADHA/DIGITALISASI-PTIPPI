@@ -5,60 +5,62 @@ namespace App\Http\Controllers\Produksi\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon; // Pakai Carbon biar urusan waktu lebih gampang
 
 class LoginController extends Controller
 {
-    /**
-     * Menampilkan halaman login
-     */
     public function index()
     {
-        // Mengarahkan ke file: resources/views/Produksi/auth/login.blade.php
         return view('Produksi.auth.login');
     }
 
-    /**
-     * Proses autentikasi user
-     */
     public function authenticate(Request $request)
     {
-        // 1. Validasi input dari form
         $request->validate([
             'nrp' => 'required',
             'password' => 'required'
         ]);
 
-        // 2. Siapkan kredensial (menggunakan NRPKaryawan sesuai model Karyawan)
         $credentials = [
             'NRPKaryawan' => $request->nrp,
             'password'    => $request->password,
-            'Status'      => 1 // Hanya mengizinkan karyawan dengan status Aktif
+            'Status'      => 1 
         ];
 
-        // 3. Eksekusi Attempt Login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Redirect ke halaman yang dituju sebelumnya atau ke dashboard
-            return redirect()->intended('/dashboard');
+            // --- LOGIKA WAKTU ---
+            $jam = Carbon::now()->format('H');
+            if ($jam >= 5 && $jam < 11) {
+                $sapaan = "Selamat Pagi";
+            } elseif ($jam >= 11 && $jam < 15) {
+                $sapaan = "Selamat Siang";
+            } elseif ($jam >= 15 && $jam < 18) {
+                $sapaan = "Selamat Sore";
+            } else {
+                $sapaan = "Selamat Malam";
+            }
+
+            $nama = Auth::user()->NamaKaryawan;
+
+            return redirect()->intended('/dashboard')->with([
+                'login_success_title' => $sapaan . ", " . $nama,
+                'login_success_text'  => "Semangat bekerja dan selalu utamakan keselamatan (K3)!",
+            ]);
         }
 
-        // 4. Jika login gagal, kembali ke halaman login dengan pesan error
         return back()->withErrors([
             'nrp' => 'NRP atau Password salah, atau akun Anda tidak aktif.',
         ])->withInput($request->only('nrp'));
     }
 
-    /**
-     * Proses logout user
-     */
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/login')->with('success_logout', 'Anda telah berhasil keluar dari sistem.');
     }
 }

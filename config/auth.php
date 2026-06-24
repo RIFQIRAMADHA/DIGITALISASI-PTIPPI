@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Produksi\Master\Karyawan::class, // Arahkan ke model Karyawan kamu
+            'model' => App\Models\Produksi\Master\MsKaryawan::class, // Arahkan ke model Karyawan kamu
         ],
     ],
 

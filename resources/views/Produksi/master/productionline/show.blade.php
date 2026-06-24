@@ -7,7 +7,7 @@
 
 {{-- BREADCRUMB --}}
 <div class="breadcrumb">
-    <span>A-Track</span>
+    <span>IPS</span>
     <span class="separator">></span>
     <span>Data Master</span>
     <span class="separator">></span>
@@ -15,11 +15,6 @@
 </div>
 
 <div class="detail-grid">
-
-    <div class="detail-item">
-        <label>ID Production Line</label>
-        <span>{{ $line->IdProductionLine }}</span>
-    </div>
 
     <div class="detail-item">
         <label>Nama Production Line</label>
@@ -40,7 +35,7 @@
 </div>
 <div class="form-actions">
         <a href="{{ route('master.productionline.index') }}" class="btn btn-outline">
-            Kembali
+            Back
         </a>
     </div>
 

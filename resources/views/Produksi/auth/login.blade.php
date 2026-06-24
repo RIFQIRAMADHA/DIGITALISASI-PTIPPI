@@ -36,12 +36,13 @@
         @csrf
         <div class="form-group">
             <label>Username</label>
-            <input type="text" name="nrp" value="{{ old('nrp') }}" placeholder="Masukkan NRP" required autofocus autocomplete="off">
+            {{-- Hapus value="{{ old('nrp') }}" agar field kosong setelah refresh/error --}}
+            <input type="text" name="nrp" placeholder="Masukan NRP" required autofocus autocomplete="off">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" placeholder="Masukkan Password" required>
+            <input type="password" name="password" placeholder="Masukan Password" required>
         </div>
 
         <button type="submit" class="btn-login">LOGIN</button>

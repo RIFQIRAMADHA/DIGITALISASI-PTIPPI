@@ -1,13 +1,13 @@
 @extends('Produksi.layouts.main')
 
-@section('title', 'Edit Karyawan')
-@section('page-title', 'Edit Karyawan')
+@section('title', 'Update Employee')
+@section('page-title', 'Update Employee')
 
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="breadcrumb">
-    <span>A-Track</span> <span class="separator">></span>
+    <span>IPS</span> <span class="separator">></span>
     <span>Data Master</span> <span class="separator">></span>
     <span class="active">Employee</span>
 </div>
@@ -17,10 +17,10 @@
 <script>
     Swal.fire({
         icon: 'error',
-        title: 'Terjadi Kesalahan',
+        title: 'Terjadi kesalahan',
         html: `
             <div style="text-align: left;">
-                <p>Gagal memperbarui data:</p>
+                <p>Mohon periksa kembali data yang Anda masukkan:</p>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -29,7 +29,7 @@
             </div>
         `,
         confirmButtonColor: '#d33',
-        confirmButtonText: 'Perbaiki Data'
+        confirmButtonText: 'OK'
     });
 </script>
 @endif
@@ -41,63 +41,89 @@
 
     <div class="form-grid">
         <div class="form-group">
-            <label>ID Karyawan</label>
+            <label>ID Karyawan <span style="color: red;">*</span></label>
             <input type="text" value="{{ $karyawan->IdKaryawan }}" disabled>
         </div>
 
         <div class="form-group">
-            <label>Nama Karyawan</label>
-            <input type="text" name="NamaKaryawan" value="{{ old('NamaKaryawan',$karyawan->NamaKaryawan) }}" required>
+            <label>Nama Karyawan <span style="color: red;">*</span></label>
+            {{-- Tambahan maxlength="60" --}}
+            <input type="text" name="NamaKaryawan" value="{{ old('NamaKaryawan',$karyawan->NamaKaryawan) }}" required
+                   maxlength="60"
+                   oninput="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')">
         </div>
 
         <div class="form-group">
-            <label>Password (Kosongkan jika tidak ganti)</label>
+            <label>Password (Kosongkan jika tidak ganti) <span style="color: red;">*</span></label>
             <input type="password" name="PasswordKaryawan" placeholder="********">
         </div>
 
         <div class="form-group">
-            <label>NRP</label>
+            <label>NRP <span style="color: red;">*</span></label>
             <input type="text" name="NRPKaryawan" value="{{ old('NRPKaryawan',$karyawan->NRPKaryawan) }}"
                    oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         </div>
 
         <div class="form-group">
-            <label>Jabatan</label>
-            <select name="Jabatan">
-                @foreach(['admin','leader','foreman','supervisor','ppc'] as $j)
-                    <option value="{{ $j }}" {{ old('Jabatan',$karyawan->Jabatan)==$j?'selected':'' }}>
-                        {{ ucfirst($j) }}
+            <label>Jabatan <span style="color: red;">*</span></label>
+            <select name="Jabatan" class="form-control">
+                <option value="">- Select Position -</option>
+                
+                @php
+                    // 1. Definisikan Jabatan Paten
+                    $patenArr = ['admin', 'quality', 'ppc', 'supervisor', 'foreman', 'leader e', 'leader f', 'leader k'];
+                    
+                    // 2. Cek apakah ini form Edit (ada $karyawan) atau Create (tidak ada $karyawan)
+                    // Pakai null coalescing (??) biar aman dari error undefined variable
+                    $jabatanSekarang = isset($karyawan) ? strtolower($karyawan->getRawOriginal('Jabatan')) : null;
+                @endphp
+
+                {{-- LOOP JABATAN PATEN --}}
+                @foreach($patenArr as $p)
+                    <option value="{{ $p }}" {{ old('Jabatan', $jabatanSekarang) == $p ? 'selected' : '' }}>
+                        {{ ucwords($p) }}
                     </option>
                 @endforeach
-            </select>
-        </div>
 
-        <div class="form-group">
-            <label>Status</label>
-            <select name="Status">
-                <option value="1" {{ old('Status',$karyawan->Status)==1?'selected':'' }}>Aktif</option>
-                <option value="0" {{ old('Status',$karyawan->Status)==0?'selected':'' }}>Nonaktif</option>
+                {{-- LOOP JABATAN DARI LINE PRODUKSI (GABUNG DISINI) --}}
+                @foreach($lines as $line)
+                    @php
+                        $kode = strtoupper(substr($line->NamaProductionLine, -1));
+                        $isPaten = in_array($kode, ['E', 'F', 'K']);
+                        $valLeader = "leader ".strtolower($kode);
+                        $valForeman = "foreman ".strtolower($kode);
+                    @endphp
+                    
+                    @if(!$isPaten)
+                        <option value="{{ $valLeader }}" {{ old('Jabatan', $jabatanSekarang) == $valLeader ? 'selected' : '' }}>
+                            Leader {{ $kode }}
+                        </option>
+                        <option value="{{ $valForeman }}" {{ old('Jabatan', $jabatanSekarang) == $valForeman ? 'selected' : '' }}>
+                            Foreman {{ $kode }}
+                        </option>
+                    @endif
+                @endforeach
             </select>
         </div>
     </div>
 
     <div class="form-actions">
-        <button type="button" class="btn btn-primary" onclick="confirmUpdate()">Perbarui</button>
-        <a href="{{ route('master.employee.index') }}" class="btn btn-outline">Batal</a>
+        <button type="button" class="btn btn-primary" onclick="confirmUpdate()">Update</button>
+        <a href="{{ route('master.employee.index') }}" class="btn btn-outline">Cancel</a>
     </div>
 </form>
 
 <script>
 function confirmUpdate() {
     Swal.fire({
-        title: 'Update Data Karyawan?',
-        text: "Apakah Anda yakin ingin menyimpan perubahan data ini?",
+        title: 'Ubah Data Karyawan?',
+        text: "Apakah Anda Yakin Ingin Menyimpan Perubahan Ini?",
         icon: 'info',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#aaa',
-        confirmButtonText: 'Ya, Perbarui!',
-        cancelButtonText: 'Batal'
+        confirmButtonText: 'Update',
+        cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById('formEditEmployee').submit();

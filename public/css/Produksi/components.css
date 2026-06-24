@@ -332,7 +332,7 @@ textarea,
 }
 
 .table-custom thead {
-    background: #c62828;
+    background: #bb2121;
     color: #fff;
 }
 
@@ -562,3 +562,600 @@ textarea,
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
 }
+
+/* ================= INPUT HARIAN CUSTOM (MATCH REFERENCE) ================= */
+
+/* Background abu-abu pada body tabel agar input putih terlihat kontras */
+.table-input-harian tbody {
+    background-color: #e9ecef !important;
+}
+
+/* Header bertingkat dengan warna merah IPPI */
+.table-input-harian thead th {
+    background-color: #bb2121 !important;
+    border: 1px solid #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+/* Styling box angka agar memiliki border hitam solid */
+.box-number {
+    background: #ffffff;
+    border: 1px solid #000000 !important;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-weight: 800;
+    color: #000000;
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+}
+
+/* Input angka khusus dalam tabel */
+.input-number-table {
+    width: 50px;
+    border: 1px solid #000000 !important;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 800;
+    height: 30px;
+}
+
+/* Tombol Detail Oranye */
+.btn-detail-orange {
+    background-color: #ffaa00 !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-detail-orange:hover {
+    background-color: #e69900 !important;
+}
+
+/* Badge status dalam tabel */
+.badge-proses {
+    background-color: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Shortcut Button Outline Tebal */
+.btn-shortcut-dt {
+    color: #e11d2e;
+    border: 2px solid #e11d2e !important;
+    background: #ffffff;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: 0.2s;
+}
+
+.btn-shortcut-idle {
+    color: #007bff;
+    border: 2px solid #007bff !important;
+    background: #ffffff;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: 0.2s;
+}
+
+/* Box Waktu Start/Finish */
+.time-box {
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-weight: 800;
+    font-size: 13px;
+    display: inline-block;
+    min-width: 45px;
+}
+
+/* Label Start/Selesai */
+.badge-status-time {
+    padding: 2px 15px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.bg-blue-start { background-color: #0d6efd; } /* Tombol Start */
+.bg-gray-finish { background-color: #6c757d; }
+
+/* Memastikan isi sel bener-bener di tengah secara vertikal & horizontal */
+.table-input-harian td {
+    vertical-align: middle !important;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+}
+
+/* Styling Box Input agar identik dengan referensi */
+.input-table-custom {
+    border: 1px solid #000 !important;
+    border-radius: 4px !important;
+    text-align: center;
+    font-weight: 800 !important;
+    background: #ffffff !important;
+}
+
+/* Konsistensi Tabel Input Harian */
+.table-input-harian input, 
+.table-input-harian span, 
+.table-input-harian select,
+.table-input-harian button {
+    font-size: 11px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Memusatkan isi sel secara vertikal dan horizontal */
+.td-center-content {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.flex-center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+}
+
+.input-table-solid {
+    border: 1px solid #000 !important;
+    border-radius: 4px !important;
+    text-align: center;
+    font-weight: 800 !important;
+    background: #ffffff !important;
+    color: #000 !important;
+}
+
+/* Untuk Header dan Sel Tabel */
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;      /* Pusatkan teks Nama Item secara horizontal */
+  vertical-align: middle; /* Pusatkan secara vertikal */
+}
+
+/* Khusus untuk kolom Plan Qty agar input tidak keluar garis */
+.column-plan-qty {
+  display: flex;
+  justify-content: center; /* Pusatkan kotak input di tengah sel */
+  align-items: center;
+  gap: 8px;                /* Jarak antar kotak input */
+  flex-wrap: wrap;         /* Agar kotak turun ke bawah jika layar sempit */
+}
+
+/* Styling untuk kotak input (angka) */
+.input-box {
+  width: 50px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.input-table-custom {
+    text-align: center;
+    padding: 0;
+    line-height: 26px; /* HARUS sama dengan height */
+}
+/* ==========================================================================
+   REJECT DETAIL V3 - FINAL CLEAN VERSION
+   ========================================================================== */
+
+/* 1. CONTAINER UTAMA */
+.reject-v2-container {
+    padding: 10px;
+    width: 100%;
+}
+
+/* 2. SUMMARY HEADER (Plan, Actual, Reject Berjejer) */
+.reject-summary-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.reject-summary-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #e9ecef;
+    border: 1.5px solid #343a40;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Kotak Angka Tebal di Header */
+.reject-summary-box-v2 {
+    background: #fff;
+    border: 1.5px solid #000;
+    border-radius: 6px;
+    padding: 2px 10px;
+    min-width: 40px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+}
+
+/* Warna Khusus Reject */
+.border-danger-custom {
+    border-color: #e11d2e !important;
+}
+
+/* 3. CARD REJECT ITEM (Gaya Card b3c2a2) */
+.reject-card-v3 {
+    border: 1.5px solid #343a40;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Grid Atas: Jenis, Nama, Qty */
+.reject-grid-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+/* Grid Bawah: Penyebab, Counter Measure */
+.reject-grid-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* 4. FORM ELEMENTS */
+.reject-card-v3 label {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+    color: #444;
+}
+
+.reject-card-v3 .form-control, 
+.reject-card-v3 .form-select {
+    border: 1px solid #343a40 !important;
+    border-radius: 10px !important;
+    height: 40px;
+    font-size: 14px;
+}
+
+/* Input Qty/Angka Khusus */
+.input-bold-border {
+    border: 1.5px solid #000 !important;
+    font-weight: 800 !important;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* 5. TOMBOL-TOMBOL (v2 & v3 Namespace) */
+.btn-v2-add, .btn-v2-save {
+    background-color: #5c67ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-v2-delete {
+    background-color: #e11d2e;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-v2-cancel {
+    background-color: #f85b2b;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 60px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-v2-add:hover, .btn-v2-delete:hover, .btn-v2-save:hover, .btn-v2-cancel:hover {
+    opacity: 0.85;
+    color: #fff;
+}
+
+/* Style Tombol Export - Panjang & Center Total */
+.btn-export-excel, .btn-export-pdf {
+    display: inline-flex;      /* Pakai flex agar ikon & teks bisa diatur posisi tengahnya */
+    align-items: center;      /* Center Vertikal (Atas-Bawah) */
+    justify-content: center;   /* Center Horizontal (Kiri-Kanan) */
+    gap: 8px;                  /* Jarak ikon ke teks */
+    
+    height: 38px;              /* Samakan tinggi dengan input filter */
+    min-width: 100px;          /* Mengatur agar tombol lebih panjang */
+    padding: 0 20px;           /* Padding kiri-kanan agar teks tidak mepet */
+    
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 11px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 0;            /* Matikan line-height default agar tidak narik teks ke bawah */
+}
+
+.btn-export-excel { background-color: #28a745; }
+.btn-export-pdf { background-color: #f82b3d; }
+
+/* Menetralisir teks di dalam tombol agar tidak miring */
+.btn-export-excel span, .btn-export-pdf span {
+    line-height: 1; 
+    display: inline-block;
+}
+
+.action-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#itemproduksiTable {
+    table-layout: auto !important;
+    width: 100%;
+}
+
+#itemproduksiTable th:nth-child(4),
+#itemproduksiTable td:nth-child(4){
+    min-width: 350px !important;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Perbaikan Badge Status agar rapi dan simetris */
+    .badge-done, .badge-progress { 
+        display: inline-block;
+        padding: 5px 12px; 
+        border-radius: 6px; 
+        font-weight: 700; 
+        font-size: 10px;
+        text-transform: uppercase;
+        min-width: 90px; /* Biar lebarnya seragam */
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .badge-done { 
+        background-color: #28a745; 
+        color: white; 
+        border: 1px solid #1e7e34;
+    }
+
+    .badge-progress { 
+        background-color: #007bff; 
+        color: white; 
+        border: 1px solid #0056b3;
+    }
+    
+    .input-table-custom[readonly] {
+    background-color: #f8f9fa !important; /* Warna abu sangat muda agar beda dengan input aktif */
+    color: #000 !important;
+    cursor: default;
+    user-select: none;
+}
+
+/* FIX PAGINATION LARAVEL DI COMPONENTS.CSS */
+.pagination-wrapper nav ul.pagination {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 5px !important;
+}
+
+.pagination-wrapper nav ul.pagination li {
+    display: inline-block !important; /* Paksa ke samping */
+    margin: 0 !important;
+}
+
+.pagination-wrapper nav ul.pagination li a, 
+.pagination-wrapper nav ul.pagination li span {
+    position: relative !important;
+    display: block !important;
+    padding: 8px 14px !important;
+    color: #5d5fef !important;
+    background-color: #fff !important;
+    border: 1px solid #dee2e6 !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    line-height: 1.25 !important;
+}
+
+.pagination-wrapper nav ul.pagination li.active span {
+    z-index: 3 !important;
+    color: #fff !important;
+    background-color: #5d5fef !important;
+    border-color: #5d5fef !important;
+}
+
+.pagination-wrapper nav ul.pagination li.disabled span {
+    color: #6c757d !important;
+    pointer-events: none !important;
+    background-color: #fff !important;
+    border-color: #dee2e6 !important;
+}
+
+/* 1. Kontainer Tabel agar bisa di-swipe di HP */
+    .table-responsive-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    /* 2. Penyesuaian Toolbar (Filter & Search) agar tumpuk di HP */
+    @media (max-width: 768px) {
+        .table-toolbar {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px;
+        }
+
+        .action-group {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-date-custom, 
+        .select-line-custom, 
+        .input-search {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+
+        /* Tombol di atas (Card Actions) */
+        .schedule-actions {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .btn-import-excel, .btn-add-schedule {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Ukuran Font Tabel di HP agar tidak terlalu raksasa */
+        .table-custom th, .table-custom td {
+            font-size: 13px;
+            padding: 10px 8px;
+        }
+    }
+
+    /* 3. Paksa Tabel tetap punya lebar minimal agar kolom tidak gepeng */
+    #scheduleTable {
+        min-width: 1100px; /* Sesuaikan dengan jumlah kolom Lu */
+    }
+
+    /* Pastikan teks panjang di dalam tabel otomatis turun ke bawah */
+#scheduleTable td {
+    white-space: normal !important; /* Paksa teks buat pindah baris */
+    word-wrap: break-word;          /* Potong kata kalau kepanjangan */
+    vertical-align: middle;        /* Biar teks tetep di tengah kolom secara vertikal */
+    line-height: 1.4;              /* Kasih jarak antar baris biar gak sesek */
+}
+
+/* Khusus kolom PIC biar lebar kolomnya pas */
+#scheduleTable td:nth-child(4) { 
+    min-width: 120px; 
+    max-width: 180px; 
+}
+
+/* Tombol SELESAI (Sekarang Putih Teks Hitam) */
+    .btn-selesai-custom { 
+        background-color: #ffffff; 
+        color: #000000; 
+        font-weight: 800; 
+        border: 1px solid #000000; 
+        padding: 5px 10px; 
+        border-radius: 4px; 
+        font-size: 11px; 
+        cursor: pointer; 
+    }
+
+    /* Tombol STOP (Sekarang Putih Teks Hitam) */
+    .btn-stop-custom { 
+        background-color: #ffffff; 
+        color: #000000; 
+        font-weight: 800; 
+        border: 1px solid #000000; 
+        padding: 5px 10px; 
+        border-radius: 4px; 
+        font-size: 11px; 
+        cursor: pointer; 
+    }
+
+    /* TPT Plan & Actual dengan Background Disable */
+.tpt-box-plan { 
+    background-color: #d1d5db !important; 
+    color: #4b5563 !important; 
+    padding: 2px 5px; 
+    border-radius: 4px; 
+    border: 1px solid #9ca3af; 
+    font-weight: 800; 
+    font-size: 12px; 
+    display: block; 
+}
+
+.tpt-box-aktual { 
+    background-color: #d1d5db !important; 
+    color: #198754 !important; /* Default Hijau */
+    padding: 2px 5px; 
+    border-radius: 4px; 
+    border: 1px solid #000; 
+    font-weight: 900; 
+    font-size: 13px; 
+    display: block; 
+}
+
+.tpt-over { 
+    background-color: #d1d5db !important; /* Paksa balik ke abu-abu disable */
+    color: #e11d2e !important;           /* Teks jadi merah */
+    border: 2px solid #e11d2e !important; /* Stroke/Garis jadi merah */
+}
+
+.select2-container--default .select2-selection--single {
+        height: 38px !important;
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        display: flex;
+        align-items: center;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 36px !important;
+    }
+    .select2-dropdown {
+        border: 1px solid #4361ee !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
